@@ -1,0 +1,21 @@
+{
+  "name": "Test",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Rodnier Borrego <rodnierbc89@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "bootstrap": "^4.0.0"
+  }
+}

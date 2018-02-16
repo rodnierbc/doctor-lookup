@@ -10,11 +10,11 @@ export class DoctorLookup {
     this.gender = gender;
   }
 
-  getPotHaz() {
+  getDoctors() {
     let that = this;
       let doctorsCall = new Promise(function(resolve, reject) {
         let request = new XMLHttpRequest();
-        let url = `https://api.betterdoctor.com/2016-03-01/doctors?location=${that.state}&api_key=${apiKey}`;
+        let url = `https://api.betterdoctor.com/2016-03-01/doctors?location=${that.state}&user_key=61ec296be9379d897b9fc99941d2fe6d`;
         console.log(url);
         request.onload = function() {
           if (this.status === 200) {
@@ -29,13 +29,10 @@ export class DoctorLookup {
 
       doctorsCall.then(function(response) {
         let body = JSON.parse(response);
-        for (var i = 0; i < body.practices.length; i++) {
-            alert(i);
+        for (var i = 0; i < body.data.length; i++) {
+           alert(i);
           }
-        }
       });
-      currentPage ++;
-
   }
 
 

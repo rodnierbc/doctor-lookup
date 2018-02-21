@@ -2,9 +2,10 @@ import {doctorQuery} from './../assets/js/doctor-lookup.js';
 import {locationQuery} from './../assets/js/doctor-lookup.js';
 
 $(document).ready(function () {
-    let medicalIssue = "sore throat";
-    let zipCode = 97223;
-
+  $("#findDoctorForm").submit(function (event) {
+		event.preventDefault();
+    let medicalIssue = "pipi";
+    let zipCode = 33140;
     locationQuery(zipCode)
       .then(function(response) {
         let body = JSON.parse(response);
@@ -19,8 +20,17 @@ $(document).ready(function () {
       for (var i = 0; i < body.data.length; i++) {
         let languages = "";
         let acceptsNewPatients = "";
+        let address = "";
+        let phone = "";
         for (var j = 0; j < body.data[i].practices.length; j++) {
-          acceptsNewPatients = body.data[i].practices[j].accepts_new_patients;
+          if(body.data[i].practices[j].accepts_new_patients){
+            acceptsNewPatients= "Yes";
+          }
+          else {
+            acceptsNewPatients= "No";
+          }
+          address = body.data[i].practices[j].visit_address.street+", "+body.data[i].practices[j].visit_address.city+", "+body.data[i].practices[j].visit_address.state+", "+body.data[i].practices[j].visit_address.zip;
+          phone = body.data[i].practices[j].phones[0].number;
         }
           let firstName = body.data[i].profile.first_name;
           let lastName = body.data[i].profile.last_name;
@@ -30,17 +40,15 @@ $(document).ready(function () {
             languages = languages + body.data[i].profile.languages[k].name + " ";
 
           }
-          doctorsFounds.push({firstName:firstName,lastName:lastName,gender:gender,languages:languages,acceptsNewPatients:acceptsNewPatients });
-
+          doctorsFounds.push({firstName:firstName,lastName:lastName,gender:gender,languages:languages,acceptsNewPatients:acceptsNewPatients,phone:phone,address:address,imageUrl:imageUrl });
       }
 
       for(i=0;i<doctorsFounds.length;i++){
-          //alert(doctorsFounds[i].firstName + "  "  + doctorsFounds[i].acceptsNewPatients + " " + doctorsFounds[i].languages);
-          $("#dataTable").append("<tr><td>1</td><td>2</td><td>3</td></tr>");
+          $("#dataTable").append("<tr><td><img src="+doctorsFounds[i].imageUrl+"/></td><td>"+doctorsFounds[i].firstName+"</td><td>"+doctorsFounds[i].lastName+"</td><td>"+doctorsFounds[i].address+"</td><td>"+doctorsFounds[i].phone+"</td><td>"+doctorsFounds[i].acceptsNewPatients+"</td><td>"+doctorsFounds[i].gender+"</td><td>"+doctorsFounds[i].languages+"</td></tr>");
        }
       //alert(doctorsFounds.length);
 		}, function (error) {
 			$('.showErrors').text(`There was an error processing your request: ${error.message}`);
 		});
-
+  });
 });

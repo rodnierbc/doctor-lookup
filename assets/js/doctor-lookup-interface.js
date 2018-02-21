@@ -34,9 +34,9 @@ $(document).ready(function () {
 
       }
 
-     // for(i=0;i<doctorsFounds.length;i++){
-     //      alert(doctorsFounds[i].firstName + "  "  + doctorsFounds[i].acceptsNewPatients + " " + doctorsFounds[i].languages);
-     //  }
+      for(i=0;i<doctorsFounds.length;i++){
+          //alert(doctorsFounds[i].firstName + "  "  + doctorsFounds[i].acceptsNewPatients + " " + doctorsFounds[i].languages);
+       }
       //alert(doctorsFounds.length);
 		}, function (error) {
 			$('.showErrors').text(`There was an error processing your request: ${error.message}`);

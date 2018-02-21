@@ -1,10 +1,10 @@
 const apiKey = require('./../../.env').apiKey;
 const apiKeyMap = require('./../../.env').apiKeyMap;
 
-export let doctorQuery = function (latitude, longitude, medicalIssue) {
+export let doctorQuery = function (latitude, longitude, medicalIssue, name) {
 	return new Promise(function (resolve, reject) {
 		let request = new XMLHttpRequest();
-		let url = `https://api.betterdoctor.com/2016-03-01/doctors?query=${medicalIssue}&location=${latitude}%2C${longitude}%2C100&user_location=${latitude}%2C${longitude}&skip=0&limit=10&user_key=${apiKey}`;
+		let url = `https://api.betterdoctor.com/2016-03-01/doctors?query=${medicalIssue}&name=${name}&location=${latitude}%2C${longitude}%2C100&user_location=${latitude}%2C${longitude}&skip=0&limit=10&user_key=${apiKey}`;
 		request.onload = function () {
 			if (this.status === 200) {
 				resolve(request.response);

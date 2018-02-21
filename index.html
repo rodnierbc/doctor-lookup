@@ -20,16 +20,22 @@
       <div class="jumbotron">
         <form action="" method="post" id="findDoctorForm">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label>Medical Issue</label>
-                    <input id="name" name="name" class="form-control" type="text">
+                    <input id="medicalIssue" name="medicalIssue" class="form-control" type="text" required>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Doctor Name</label>
+                    <input id="doctorName" name="medicalIssue" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="col-md-4">
                 <div class="form-group">
                     <label>ZipCode</label>
-                    <input id="birthday" name="birthday" class="form-control" type="number">
+                    <input id="zipCode" name="zipCode" class="form-control" type="number" required>
                 </div>
             </div>
           </div>
@@ -41,22 +47,28 @@
               </div>
           </div>
         </form>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Picture</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Address</th>
-                <th>Phone number</th>
-                <th>Accept patients</th>
-                <th>Gender</th>
-                <th>languages</th>
-            </tr>
-            </thead>
-            <tbody id="dataTable">
-            </tbody>
-        </table>
+        <div class="alert alert-info alert-dismissable" id="doctorsNotFoundInfo">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Sorry!</strong> We do not find any doctor that fits your search criteria, check your entries, they may be incorrect.
+        </div>
+        <div id="doctorsFounds">
+          <table class="table">
+              <thead>
+              <tr>
+                  <th>Picture</th>
+                  <th>First name</th>
+                  <th>Last name</th>
+                  <th>Address</th>
+                  <th>Phone number</th>
+                  <th>Accept patients</th>
+                  <th>Gender</th>
+                  <th>languages</th>
+              </tr>
+              </thead>
+              <tbody id="dataTable">
+              </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </body>

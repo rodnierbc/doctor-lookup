@@ -48,7 +48,6 @@ $(document).ready(function () {
           doctorsFounds.push({firstName:firstName,lastName:lastName,gender:gender,languages:languages,acceptsNewPatients:acceptsNewPatients,phone:phone,address:address,imageUrl:imageUrl,website:website });
       }
       if(doctorsFounds.length>0){
-        alert(doctorsFounds.length);
         for(i=0;i<doctorsFounds.length;i++){
             $("#dataTable").append("<tr><td><img src="+doctorsFounds[i].imageUrl+"/></td><td>"+doctorsFounds[i].firstName+"</td><td>"+doctorsFounds[i].lastName+"</td><td>"+doctorsFounds[i].address+"</td><td>"+doctorsFounds[i].phone+"</td><td>"+doctorsFounds[i].acceptsNewPatients+"</td><td>"+doctorsFounds[i].gender+"</td><td>"+doctorsFounds[i].languages+"</td></tr>");
          }
@@ -57,8 +56,6 @@ $(document).ready(function () {
       }else {
         $("#doctorsNotFoundInfo").show();
       }
-
-      //alert(doctorsFounds.length);
 		}, function (error) {
       $("#doctorsFounds").hide();
       $("#doctorsNotFoundInfo").show();

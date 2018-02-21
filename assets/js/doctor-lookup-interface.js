@@ -36,6 +36,7 @@ $(document).ready(function () {
 
       for(i=0;i<doctorsFounds.length;i++){
           //alert(doctorsFounds[i].firstName + "  "  + doctorsFounds[i].acceptsNewPatients + " " + doctorsFounds[i].languages);
+          $("#dataTable").append("<tr><td>1</td><td>2</td><td>3</td></tr>");
        }
       //alert(doctorsFounds.length);
 		}, function (error) {

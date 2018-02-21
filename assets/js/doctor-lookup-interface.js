@@ -1,11 +1,18 @@
 import {doctorQuery} from './../assets/js/doctor-lookup.js';
+import {locationQuery} from './../assets/js/doctor-lookup.js';
 
 $(document).ready(function () {
-    let state = "or";
-    let medicalIssue = "rash";
-		let doctorsCall = doctorQuery(state, medicalIssue);
+    let medicalIssue = "sore throat";
+    let zipCode = 97223;
 
-		doctorsCall.then(function (response) {
+    locationQuery(zipCode)
+      .then(function(response) {
+        let body = JSON.parse(response);
+        let latitude = body.results[0].geometry.location.lat;
+        let longitude = body.results[0].geometry.location.lng;
+        return doctorQuery(latitude, longitude, medicalIssue);
+      })
+		.then(function (response) {
       var doctorsFounds = [];
 			let data = JSON.parse(response);
       let body = JSON.parse(response);
@@ -14,7 +21,6 @@ $(document).ready(function () {
         let acceptsNewPatients = "";
         for (var j = 0; j < body.data[i].practices.length; j++) {
           acceptsNewPatients = body.data[i].practices[j].accepts_new_patients;
-          //alert(acceptsNewPatients);
         }
           let firstName = body.data[i].profile.first_name;
           let lastName = body.data[i].profile.last_name;
@@ -28,10 +34,10 @@ $(document).ready(function () {
 
       }
 
-     for(i=0;i<doctorsFounds.length;i++){
-          alert(doctorsFounds[i].firstName + "  "  + doctorsFounds[i].acceptsNewPatients + " " + doctorsFounds[i].languages);
-      }
-      alert(doctorsFounds.length);
+     // for(i=0;i<doctorsFounds.length;i++){
+     //      alert(doctorsFounds[i].firstName + "  "  + doctorsFounds[i].acceptsNewPatients + " " + doctorsFounds[i].languages);
+     //  }
+      //alert(doctorsFounds.length);
 		}, function (error) {
 			$('.showErrors').text(`There was an error processing your request: ${error.message}`);
 		});

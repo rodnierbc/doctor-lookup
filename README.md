@@ -15,7 +15,7 @@ This application allows users to find a list of doctors close to them who can me
 $ git clone https://github.com/rodnierbc/doctor-lookup.git
 ```
 * Open terminal and create _.env_ file at the top of the project directory
-* Aquire and copy API key from _betterdoctor.com_
+* Aquire and copy API key accessing the following link: _https://betterdoctor.com_
 * Aquire and copy API key accessing the following link: _https://developers.google.com/maps/documentation/javascript/get-api-key_
 * Inside the _.env_ file add the following 2 lines of code:
 ```sh

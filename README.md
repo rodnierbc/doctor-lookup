@@ -19,10 +19,10 @@ $ git clone https://github.com/rodnierbc/doctor-lookup.git
 * Aquire and copy API key accessing the following link: _https://developers.google.com/maps/documentation/javascript/get-api-key_
 * Inside the _.env_ file add the following 2 lines of code:
 ```sh
-_exports.apiKey = "Paste api key from better doctor here";_
+exports.apiKey = "Paste api key from better doctor here";
 ```
 ```sh
-_exports.apiKeyMap = "paste api key from google maps here";_
+exports.apiKeyMap = "paste api key from google maps here";
 ```
 * Save the changes in the .env file
 * Initialize NPM via  ```npm init```
